@@ -5,114 +5,64 @@
  * @format
  */
 
-import React from 'react';
-import type {PropsWithChildren} from 'react';
+import React, {useState} from 'react';
 import {
   SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
   Text,
-  useColorScheme,
   View,
+  NativeModules,
+  NativeEventEmitter,
+  Button,
+  TextInput,
 } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+  const [authorizationToken, setAuthorizationToken] = useState('');
+  const [response, setResponse] = useState<string | undefined>(undefined);
 
   const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    backgroundColor: Colors.lighter,
+    flex: 1,
   };
+  const {JumioMobileSDK} = NativeModules;
+
+  const startJumio = () => {
+    setResponse('Cargando');
+    JumioMobileSDK.initialize(authorizationToken, 'US');
+    JumioMobileSDK.start();
+  };
+
+  const emitterJumio = new NativeEventEmitter(JumioMobileSDK);
+  emitterJumio.addListener('EventResult', EventResult => {
+    console.warn('EventResult: ' + JSON.stringify(EventResult));
+    setResponse(JSON.stringify(EventResult));
+  });
+  emitterJumio.addListener('EventError', EventError => {
+    console.error('EventError: ' + JSON.stringify(EventError));
+    setResponse(JSON.stringify(EventError));
+  });
 
   return (
     <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
+      <TextInput
+        placeholder="Ingrese el token"
+        placeholderTextColor="#000"
+        returnKeyType="done"
+        onChangeText={text => setAuthorizationToken(text)}
+        value={authorizationToken}
       />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
+      <Button title={'Buscar'} onPress={startJumio} />
+      <View style={{flex: 1, justifyContent: 'center', paddingHorizontal: 16}}>
+        {response ? (
+          <Text style={{textAlign: 'center', textAlignVertical: 'center'}}>
+            {response}
+          </Text>
+        ) : undefined}
+      </View>
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
 
 export default App;

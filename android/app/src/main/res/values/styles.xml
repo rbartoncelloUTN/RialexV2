@@ -5,5 +5,93 @@
         <!-- Customize your theme here. -->
         <item name="android:editTextBackground">@drawable/rn_edit_text_material</item>
     </style>
+    <style name="AppThemeCustomJumio" parent="Theme.Jumio">
+        <item name="colorPrimary">#ff3c005f</item>
+        <item name="jumio_background">#FFFFFF</item>
+        <item name="jumio_text_foreground">#ff1f1f1f</item>
+        <item name="jumio_navigation_icon">#ffff671d</item>
+        <item name="jumio_navigation_icon_dark">#ff1f1f1f</item>
+        <item name="jumio_bubble_background">#fff6f6f6</item>
+        <item name="jumio_bubble_background_selected">#ffdcdcdc</item>
+        <item name="jumio_bubble_foreground">#ff1f1f1f</item>
+        <item name="jumio_bubble_outline">#fff6f6f6</item>
+        <item name="jumio_bubble_outline_selected">#ffdcdcdc</item>
+        <item name="jumio_primary_button_background">#ff3c005f</item>
+        <item name="jumio_primary_button_background_pressed">#ff240039</item>
+        <item name="jumio_primary_button_background_disabled">#fff6f6f6</item>
+        <item name="jumio_primary_button_foreground">#ffffffff</item>
+        <item name="jumio_primary_button_outline">#00000000</item>
+        <item name="jumio_secondary_button_background">#ffffffff</item>
+        <item name="jumio_secondary_button_background_pressed">#EDF1F5</item>
+        <item name="jumio_secondary_button_background_disabled">#F5F7FA</item>
+        <item name="jumio_secondary_button_foreground">#ff1f1f1f</item>
+        <item name="jumio_secondary_button_foreground_pressed">#1F1F1F</item>
+        <item name="jumio_secondary_button_foreground_disabled">#9AA4AF</item>
+        <item name="jumio_secondary_button_outline">#00ffffff</item>
+        <item name="jumio_circle_item_background">#ffd8ccdf</item>
+        <item name="jumio_circle_item_foreground">#ff3c005f</item>
+        <item name="jumio_switch_thumb_off">#EDF1F5</item>
+        <item name="jumio_switch_track_off">#EDF1F5</item>
+        <item name="jumio_switch_track_on">#802ABC6D</item>
+        <item name="jumio_selection_icon_foreground">#5C6570</item>
+        <item name="jumio_search_bubble_background">#ffdcdcdc</item>
+        <item name="jumio_search_bubble_foreground">#ff474747</item>
+        <item name="jumio_scanview_foreground">#ffffffff</item>
+        <item name="jumio_scanview_animation_background">#661f1f1f</item>
+        <item name="jumio_scanview_shutter">#FFFFFF</item>
+        <item name="jumio_scanview_shutter_pressed">#000000</item>
+        <item name="jumio_scanview_shutter_dark">#000000</item>
+        <item name="jumio_scanview_shutter_dark_pressed">#000000</item>
+        <item name="jumio_scanview_bubble_background">#99000000</item>
+        <item name="jumio_scanview_bubble_foreground">#FFFFFF</item>
+        <item name="jumio_confirmation_image_background">#FFFFFF</item>
+        <item name="jumio_confirmation_image_background_border">#FFFFFF</item>
+        <item name="jumio_image_border">#DFE5EC</item>
+        <item name="jumio_indicator_active">#5C6570</item>
+        <item name="jumio_indicator_default">#DFE5EC</item>
+        <item name="jumio_face_primary">#DFE5EC</item>
+        <item name="jumio_face_secondary">#757F8A</item>
+        <item name="jumio_face_outline">#3E4753</item>
+        <item name="jumio_face_success">#ff3c005f</item>
+        <item name="jumio_loading_circle_plain">#ffff671d</item>
+        <item name="jumio_loading_circle_gradient_start">#ff148230</item>
+        <item name="jumio_loading_circle_gradient_end">#ff148230</item>
+        <item name="jumio_loading_circle_icon">#FFFFFF</item>
+        <item name="jumio_error_circle_gradient_start">#ff93161e</item>
+        <item name="jumio_error_circle_gradient_end">#ff93161e</item>
+        <item name="jumio_overlay_customization">@style/CustomOverlay</item>
+        <item name="iproov_customization">@style/CustomIproov</item>
+        <item name="nfc_customization">@style/CustomNfc</item>
+    </style>
+    <style name="CustomOverlay" parent="Jumio.Overlay.Customization">
+        <item name="jumio_scanOverlay">#FFFFFF</item>
+        <item name="jumio_scanOverlayFill">#FFFFFF</item>
+        <item name="jumio_scanOverlayTransparent">#80FFFFFF</item>
+        <item name="jumio_scanBackground">#99000000</item>
+        <item name="jumio_scanOverlay_livenessStroke">#ff3c005f</item>
+        <item name="jumio_scanOverlay_livenessStrokeAnimation">#ff3c005f</item>
+        <item name="jumio_scanOverlay_livenessStrokeAnimationCompleted">#ff148230</item>
+    </style>
+    <style name="CustomNfc" parent="Nfc.Customization">
+        <item name="nfc_passport_cover">#5C6570</item>
+        <item name="nfc_passport_page_dark">#5C6570</item>
+        <item name="nfc_passport_page_light">#EDF1F5</item>
+        <item name="nfc_passport_foreground">#EDF1F5</item>
+        <item name="nfc_phone_background">#000000</item>
+    </style>
+    <style name="CustomIproov" parent="Iproov.Customization">
+        <item name="iproov_closeButton_colorTint">#FFFFFF</item>
+        <item name="iproov_filterForegroundColor">#661f1f1f</item>
+        <item name="iproov_filterBackgroundColor">#FFFFFF</item>
+        <item name="iproov_titleTextColor">#FFFFFF</item>
+        <item name="iproov_surroundColor">#661f1f1f</item>
+        <item name="iproov_genuinePresenceAssurance_readyOvalStrokeColor">#5ACC29</item>
+        <item name="iproov_genuinePresenceAssurance_notReadyOvalStrokeColor">#FFFFFF</item>
+        <item name="iproov_livenessAssurance_ovalStrokeColor">#FFFFFF</item>
+        <item name="iproov_livenessAssurance_completedOvalStrokeColor">#ff3c005f</item>
+        <item name="iproov_promptTextColor">#FFFFFF</item>
+        <item name="iproov_promptBackgroundColor">#ff1f1f1f</item>
+        <item name="iproov_promptRoundedCorners">true</item>
+    </style>
 
 </resources>
